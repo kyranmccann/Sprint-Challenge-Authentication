@@ -44,12 +44,23 @@ a {
   font-size: inherit;
 }
 
-.welcome a, .users a {
-  color: #670C16;
-}
 
 .login {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.loggedout a {
+  color: #670C16;
+}
+
+.loggedout {
+  margin: 7% 5%;
+  color: white;
+  width: 65%;
+}
+
+.loggedout h2 {
+  margin: 3%;
 }

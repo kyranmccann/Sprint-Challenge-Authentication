@@ -58,7 +58,7 @@ class RegForm extends React.Component {
     this.state = {
       user: { ...initialUser },
       message: '',
-      wasSuccessful: true, 
+      wasSuccessful: false, 
     }
   }
 
