@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import RegSuccess from './RegSuccess';
 
 //styled components
 const StyledForm = styled.form`
-  background: #76323F;
+  background: #670C16;
   border-radius: 5px;
   color: #D7CEC7;
   display: flex;
@@ -13,7 +14,7 @@ const StyledForm = styled.form`
   justify-content: space-between;
   margin: 3% auto;
   padding: 30px 10px;
-  width: 50%;
+  width: 80%;
 `;
 
 const StyledLabel = styled.label`
@@ -28,18 +29,18 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  background: #C09F80;
-  border: 1px solid #565656;
+  background: #062532;
+  border: 1px solid #D7CEC7;
   border-radius: 3px;
-  color: #565656;
+  color: #D7CEC7;
   cursor: pointer;
   padding: 7px;
   margin-top: 10px;
 
   &&:hover {
-    background: #565656;
-    border: qpx solid #C09F80;
-    color: #C09F80;
+    background: #D7CEC7;
+    border: qpx solid #062532;
+    color: #062532;
   }
 `;
 
@@ -57,6 +58,7 @@ class RegForm extends React.Component {
     this.state = {
       user: { ...initialUser },
       message: '',
+      wasSuccessful: true, 
     }
   }
 
@@ -87,10 +89,16 @@ submitHandler = event => {
       })
 }
 
+  goToLogin = () => {
+    this.props.history.push('/signin');
+  }
   render() {
+    if (this.state.wasSuccessful) {
+      return <RegSuccess goToLogin={this.goToLogin} />
+    }
     return (
       <div>
-  <h3>Please Login</h3>
+  <h3>Please Register</h3>
   <StyledForm onSubmit={this.submitHandler}>
     <StyledLabel htmlFor='username'>Username</StyledLabel>
     <StyledInput

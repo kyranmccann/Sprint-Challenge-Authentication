@@ -4,16 +4,16 @@ import styled from 'styled-components';
 
 //styled components
 const StyledForm = styled.form`
-  background: #76323F;
+  background: #670C16;
   border-radius: 5px;
   color: #D7CEC7;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  margin: 3% auto;
+  /* margin: 3% 10%; */
   padding: 30px 10px;
-  width: 50%;
+  width: 80%;
 `;
 
 const StyledLabel = styled.label`
@@ -28,18 +28,18 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  background: #C09F80;
-  border: 1px solid #565656;
+  background: #062532;
+  border: 1px solid #D7CEC7;
   border-radius: 3px;
-  color: #565656;
+  color: #D7CEC7;
   cursor: pointer;
   padding: 7px;
   margin-top: 10px;
 
   &&:hover {
-    background: #565656;
-    border: qpx solid #C09F80;
-    color: #C09F80;
+    background: #D7CEC7;
+    border: qpx solid #062532;
+    color: #062532;
   }
 `;
 
@@ -70,19 +70,16 @@ submitHandler = event => {
   axios
     .post(`${url}/api/login`, this.state.user)
     .then(response => {
-      if (response.status === 200 && response.data) {
         localStorage.setItem('super_secret', response.data.token)
         this.setState({
           message: 'Login successful',
           user: { ...initialUser },
         })
-        this.props.history.push('/home');
-      } else {
-        throw new Error();
-      }
+        this.props.history.push('/jokes');
     })
     .catch(err => {
-      this.setState({
+      console.log(err)
+;       this.setState({
         message: 'Login failed',
         user: { ...initialUser },
       })
@@ -91,7 +88,7 @@ submitHandler = event => {
 
   render() {
     return (
-      <div>
+      <div className='login'>
   <h3>Please Login</h3>
   <StyledForm onSubmit={this.submitHandler}>
     <StyledLabel htmlFor='username'>Username</StyledLabel>

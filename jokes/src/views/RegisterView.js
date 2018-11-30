@@ -12,6 +12,12 @@ width: 100%;
 height: 90vh;
 `;
 
+const FormHolder = styled.div`
+  width: 60%;
+  padding: 5%;
+  margin: 0 5%;
+`;
+
 class RegisterView extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +26,9 @@ class RegisterView extends React.Component {
   render() {
     return (
       <RegisterHolder>
-      <RegForm />
+      <FormHolder>
+      <RegForm history={this.props.history} />
+      </FormHolder>
       </RegisterHolder>
     )
   }

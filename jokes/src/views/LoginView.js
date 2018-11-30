@@ -8,8 +8,17 @@ const LoginHolder = styled.div`
 background: url(${img});
 background-size: cover;
 background-repeat: no-repeat;
+background-position: -20vw 0;
 width: 100%;
 height: 90vh;
+position: relative;
+`;
+
+const FormHolder = styled.div`
+  width: 60%;
+  padding: 5%;
+  position: absolute;
+  right: 0;
 `;
 
 class LoginView extends React.Component {
@@ -20,7 +29,9 @@ class LoginView extends React.Component {
   render() {
     return (
       <LoginHolder>
-        <LoginForm />
+      <FormHolder>
+        <LoginForm history={this.props.history} />
+      </FormHolder>
       </LoginHolder>
     )
   }
